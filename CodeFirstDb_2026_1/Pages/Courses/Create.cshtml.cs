@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CodeFirstDb_2026_1.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using CodeFirstDb_2026_1.Data;
 
 namespace CodeFirstDb_2026_1.Pages.Courses
 {
     public class CreateModel : PageModel
     {
-        private readonly CodeFirstDb_2026_1.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(CodeFirstDb_2026_1.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using CodeFirstDb_2026_1.Data;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using CodeFirstDb_2026_1.Data;
 
 namespace CodeFirstDb_2026_1.Pages.Courses
 {
     public class IndexModel : PageModel
     {
-        private readonly CodeFirstDb_2026_1.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public IndexModel(CodeFirstDb_2026_1.Data.ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context)
         {
             _context = context;
         }

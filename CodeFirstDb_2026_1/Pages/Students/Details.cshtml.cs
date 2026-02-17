@@ -8,9 +8,9 @@ namespace CodeFirstDb_2026_1.Pages.Students
 {
     public class DetailsModel : PageModel
     {
-        private readonly CodeFirstDb_2026_1.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(CodeFirstDb_2026_1.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,25 +24,15 @@ namespace CodeFirstDb_2026_1.Pages.Students
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
             Courses = await _context.Courses.Select(x => new SelectListItem
             {
                 Value = x.CourseId.ToString(),
-                Text = x.Name,
-                Selected = false
+                Text = x.Name
             }).ToListAsync();
             var student = await _context.Students.Include("Courses").FirstOrDefaultAsync(m => m.StudentId == id);
-            if (student == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                Student = student;
-            }
+            if (student == null || Courses == null) return NotFound();
+            Student = student;
             return Page();
         }
 
@@ -61,16 +51,10 @@ namespace CodeFirstDb_2026_1.Pages.Students
 
         public async Task<IActionResult> OnPostAsync(int StudentId)
         {
-            if (StudentId == 0 || SelectedCourse == null)
-            {
-                               return NotFound();
-            }
+            if (StudentId == 0 || SelectedCourse == null) return NotFound();
             var student = await _context.Students.Include("Courses").FirstOrDefaultAsync(m => m.StudentId == StudentId);
             var course = await _context.Courses.FirstOrDefaultAsync(m => m.CourseId == int.Parse(SelectedCourse));
-            if (student == null || course == null)
-            {
-                return NotFound();
-            }
+            if (student == null || course == null) return NotFound();
             student.Courses.Add(course);
             await _context.SaveChangesAsync();
             return RedirectToPage("./Details", new { id = StudentId });
