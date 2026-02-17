@@ -16,7 +16,7 @@ namespace CodeFirstDb_2026_1.Pages.Students
         public Student Student { get; set; } = default!;
         // This is the list of courses that are available for the student to enroll in. It is not nullable because we will initialize it in the OnGetAsync method.
         public List<SelectListItem> Courses { get; set; } = default!;
-        // This is the selected course that the student will be enrolled in. It is not nullable because we will initialize it in the OnGetAsync method.
+        // This is the selected course that the student will be enrolled in. We have made it a bind property so that it can be accessed in the OnPostAsync method.
         [BindProperty]
         public string SelectedCourse { get; set; } = default!;
 

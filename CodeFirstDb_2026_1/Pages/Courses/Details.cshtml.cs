@@ -6,6 +6,12 @@ using Microsoft.EntityFrameworkCore;
 //Namespce tells you what this DetailsModel is modeling... Courses.
 namespace CodeFirstDb_2026_1.Pages.Courses
 {
+    /// <summary>
+    /// THERE IS NO BIND PROPERTY IN THIS PAGE BECAUSE WE ARE NOT
+    /// SUBMITTING ANY FORMS. THIS IS DIFFERENT THAN THE OTHER STUDENTS
+    /// DETAILS PAGE. BASICALLY, TEACHERS CAN'T RANDOMLY ENROLL STUDENTS IN
+    /// THEIR COURSES, BUT THEY CAN REMOVE STUDENTS.
+    /// </summary>
     public class DetailsModel : PageModel
     {
         #region Variables, Fields and Properties
