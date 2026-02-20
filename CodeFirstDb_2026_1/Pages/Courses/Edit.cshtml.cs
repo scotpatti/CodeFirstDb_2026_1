@@ -1,10 +1,12 @@
 ﻿using CodeFirstDb_2026_1.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodeFirstDb_2026_1.Pages.Courses
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CodeFirstDb_2026_1.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
